@@ -14,25 +14,24 @@ public class Code {
                 System.out.println("Please input name of website to generate password: ");
                 String website = reader.readLine();
                 System.out.println("Please input length of password(minimal length 8): ");
-                try{
-                    int length = Integer.parseInt(reader.readLine());
-                    if(length < 8){
-                        System.out.println("Wrong password length, enter 8 or more");
-                    }else {
-                        System.out.println("Please input file name: ");
-                        String folder = reader.readLine();
-                        FileOutputStream outputStream = new FileOutputStream(folder);
-                        ByteArrayOutputStream password = getPassword(length);
-                        String line = password.toString();
-                        StringBuilder builder = new StringBuilder();
-                        builder.append(website + ": " + line);
-                        outputStream.write(builder.toString().getBytes());
-                        System.out.println("Password successfully generated");
+                    try {
+                        int length = Integer.parseInt(reader.readLine());
+                        if (length < 8) {
+                            System.out.println("Wrong password length, enter 8 or more");
+                        } else {
+                            System.out.println("Please input file name: ");
+                            String folder = reader.readLine();
+                            FileOutputStream outputStream = new FileOutputStream(folder);
+                            ByteArrayOutputStream password = getPassword(length);
+                            String line = password.toString();
+                            StringBuilder builder = new StringBuilder();
+                            builder.append(website + ": " + line);
+                            outputStream.write(builder.toString().getBytes());
+                            System.out.println("Password successfully generated");
+                        }
+                    } catch (NumberFormatException e) {
+                        System.out.println("Wrong data type, enter integer");
                     }
-                }catch (NumberFormatException e){
-                    System.out.println("Wrong data type, enter integer");
-                }
-
             }if(action == 0){
                 break;
             }
